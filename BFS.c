@@ -1,40 +1,74 @@
-#include<stdio.h>
-#include<stdlib.h>
-int a[20][20], q[20], visited[20], n, i, j, f = 0, r = -1;
-void bfs (int v);
+#include<stdio.h> 
 
-void main (){
-  int v;
-  printf ("\n Enter the number of vertices:");
-  scanf ("%d", &n);
-  for (i = 1; i <= n; i++){
-      q[i] = 0;
-      visited[i] = 0;
-    }
-  printf ("\n Enter graph data in matrix form:\n");
-  for (i = 1; i <= n; i++){
-    for (j = 1; j <= n; j++){
-      scanf ("%d", &a[i][j]);
-    }
-  }
-  printf ("\n Enter the starting vertex:");
-  scanf ("%d", &v);
-  bfs (v);
-  printf ("\n The node which are reachable are:\n");
-  for (i = 1; i <= n; i++){
-    if (visited[i]){
-      printf ("%d\t", i);
-    }
-  }
-}
+#include<conio.h> 
 
-void bfs (int v)
-{
-  for (i = 1; i <= n; i++)
-    if (a[v][i] && !visited[i])
-      q[++r] = i;
-    if (f <= r){
-      visited[q[f]] = 1;
-      bfs (q[f++]);
-    }
+int a[10][10],n; 
+
+void bfs(int); 
+
+void main() 
+
+{ 
+
+ int i,j,src; 
+
+ 
+
+ printf("\nenter the no of nodes:\t"); 
+
+ scanf("%d",&n); 
+
+ printf("\nenter the adjacency matrix:\n"); 
+
+ for(i=1;i<=n;i++) 
+
+ { 
+
+  for(j=1;j<=n;j++) 
+
+  { 
+
+   scanf("%d",&a[i][j]); 
+
+  } 
+
+ } 
+
+ printf("\nenter the source node:\t"); 
+ scanf("%d",&src); 
+ bfs(src); 
+} 
+void bfs(int src) {
+ int q[10],f=0,r=-1,vis[10],i,j; 
+ for(j=1;j<=n;j++) 
+    vis[j]=0; 
+ vis[src]=1; 
+ r=r+1; 
+ q[r]=src; 
+ while(f<=r) { 
+  i=q[f]; 
+  f=f+1; 
+  for(j=1;j<=n;j++) 
+  { 
+   if(a[i][j]==1&&vis[j]!=1) { 
+    vis[j]=1; 
+    r=r+1; 
+    q[r]=j; 
+   } 
+  } 
+ } 
+ for(j=1;j<=n;j++)  { 
+  if(vis[j]!=1) 
+   printf("\nnode %d is not reachable\n",j); 
+
+  else 
+
+  { 
+
+   printf("\nnode %d is reachable\n",j); 
+
+  } 
+
+ } 
+
 }
