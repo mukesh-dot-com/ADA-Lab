@@ -18,7 +18,7 @@ void main()
     printf("The time taken is %lf seconds",((double)(end-start)/CLOCKS_PER_SEC));
 }
 void delay(){
-    long i,j,k,l;
+    long i;
     for(i=0;i<10000000;i++);
 }
 int gcd(int x,int y){
