@@ -20,9 +20,10 @@ void hanoi(int n, char a,char b,char c) {
         hanoi(n-1,b,a,c);
     }
 }
-void main() {
+int main() {
     clock_t start,end;
     int n;
+    int moves;
     printf("Enter the number of disks\n");
     scanf("%d",&n);
     moves = pow(2,n)-1;
@@ -31,4 +32,5 @@ void main() {
     hanoi(n,'a','b','c');
     end=clock();
     printf("%lf seconds",(double)(end-start)/CLOCKS_PER_SEC);
+    return 0;
 }
