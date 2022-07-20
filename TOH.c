@@ -1,15 +1,19 @@
 #include <stdio.h>
 #include <time.h>
+#include <math.h>
 
 void delay(){
-    long i,j,k,l;
+    long i,j;
     for(i=0;i<1000;i++){
         for(j=0;j<100000;j++);
     }
 }
 
 void hanoi(int n, char a,char b,char c) {
-    if(n>0) {
+    if(n==1){
+        printf("move from %c to %c\n",a,c);
+    }
+    else {
         hanoi(n-1,a,c,b);
         printf("move from %c to %c\n",a,c);
         delay();
@@ -21,6 +25,8 @@ void main() {
     int n;
     printf("Enter the number of disks\n");
     scanf("%d",&n);
+    moves = pow(2,n)-1;
+    printf("Number of moves is %d\n",moves);
     start= clock();
     hanoi(n,'a','b','c');
     end=clock();
