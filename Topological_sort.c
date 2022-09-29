@@ -23,7 +23,7 @@ while(top!=-1) {
     if(a[u][v]==1) { 
       indeg[v]=indeg[v]-1; 
       if(indeg[v]==0) 
-      s[++top]=v; 
+        s[++top]=v; 
     } 
   } 
 } 
